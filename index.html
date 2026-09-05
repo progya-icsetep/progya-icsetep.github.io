@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Project Progya: a unified AI-powered national competency framework integrating Bayesian Knowledge Tracing, a domain-adapted LLM for assessment generation, and a privacy-preserving System-Level Calibration Loop. PI: Professor Dr. Mohammad Saifur Rahman, Dept of CSE, BUET.">
+<meta name="author" content="Professor Dr. Mohammad Saifur Rahman, Department of CSE, BUET">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Project Progya">
+<meta property="og:description" content="A unified AI-powered national competency framework for 21st-century skills assessment and predictive policy analytics.">
+<style>
+  html{color-scheme:light dark}
+  body{margin:0}
+  img{max-width:100%}
+  [hidden]{display:none!important}
+</style>
+<title>Project Progya</title>
+<script>
+  /* Gate the reveal styles on JS + IntersectionObserver being available, set
+     before first paint so content is never hidden by CSS that nothing can undo. */
+  if (window.IntersectionObserver) document.documentElement.className += ' jsr';
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Tiro+Bangla:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;450;500;600&display=swap">
+
+<style>
+/* ============================================================
+   PROJECT PROGYA — Swiss Modernism 2.0
+   12-column modular grid · institutional navy · research ochre
+   ============================================================ */
+
+:root{
+  /* --- surfaces & ink (names kept stable: inline SVG references them) --- */
+  --ground:#f4f6f9;
+  --surface:#ffffff;
+  --sunken:#eef2f7;
+  --ink:#0f172a;
+  --ink-2:#334155;
+  --ink-3:#64748b;
+  --rule:#e2e8f0;
+  --rule-strong:#cbd5e1;
+
+  /* --- brand --- */
+  --accent:#1e3a5f;          /* institutional navy */
+  --accent-2:#2c5286;
+  --accent-soft:#e7edf5;
+  --signal:#9a5d06;          /* research ochre */
+  --signal-soft:#fbf3e4;
+  --gap:#b42318;
+
+  --on-navy:#ffffff;
+  --on-navy-2:#a9bcd4;
+  --navy-rule:rgba(255,255,255,.16);
+
+  --shadow:0 1px 1px rgba(15,23,42,.04), 0 12px 32px -24px rgba(15,23,42,.5);
+
+  /* --- type --- */
+  --f-display:"EB Garamond", "Iowan Old Style", Georgia, serif;
+  --f-body:"IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --f-bangla:"Tiro Bangla", "Noto Serif Bengali", "Nirmala UI", "Vrinda", serif;
+
+  /* --- grid & rhythm --- */
+  --measure:64ch;
+  --pad:clamp(20px, 4.5vw, 64px);
+  --gutter:clamp(18px, 2.4vw, 34px);
+  --mast:58px;
+  --s1:8px; --s2:16px; --s3:24px; --s4:32px; --s5:48px; --s6:64px;
+}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0b1220;
+    --surface:#111a2b;
+    --sunken:#0e1626;
+    --ink:#e8eef6;
+    --ink-2:#aebccf;
+    --ink-3:#8296ae;
+    --rule:#1e2b40;
+    --rule-strong:#33455f;
+    --accent:#84acdf;
+    --accent-2:#a7c5ec;
+    --accent-soft:#14243c;
+    --signal:#dda850;
+    --signal-soft:#2a2113;
+    --gap:#f0736b;
+    --on-navy:#ffffff;
+    --on-navy-2:#9fb3cc;
+    --navy-rule:rgba(255,255,255,.12);
+    --shadow:0 1px 1px rgba(0,0,0,.5), 0 14px 36px -26px rgba(0,0,0,1);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0b1220;
+  --surface:#111a2b;
+  --sunken:#0e1626;
+  --ink:#e8eef6;
+  --ink-2:#aebccf;
+  --ink-3:#8296ae;
+  --rule:#1e2b40;
+  --rule-strong:#33455f;
+  --accent:#84acdf;
+  --accent-2:#a7c5ec;
+  --accent-soft:#14243c;
+  --signal:#dda850;
+  --signal-soft:#2a2113;
+  --gap:#f0736b;
+  --on-navy:#ffffff;
+  --on-navy-2:#9fb3cc;
+  --navy-rule:rgba(255,255,255,.12);
+  --shadow:0 1px 1px rgba(0,0,0,.5), 0 14px 36px -26px rgba(0,0,0,1);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:calc(var(--mast) + 20px)}
+body{
+  background:var(--ground);
+  color:var(--ink);
+  font-family:var(--f-body);
+  font-size:16.5px;
+  font-weight:400;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+p{margin:0}
+h1,h2,h3,h4{margin:0; text-wrap:balance; font-weight:500}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--signal); outline-offset:3px; border-radius:1px}
+
+.sr-only{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
+}
+
+/* Bangla script: Tiro Bangla renders small next to Latin, so it is set up a step */
+.bn{font-family:var(--f-bangla); font-size:1.14em; line-height:1.9}
+
+.wrap{max-width:1240px; margin:0 auto; padding:0 var(--pad)}
+
+/* ---------- the 12-column field ---------- */
+.grid{display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:var(--gutter)}
+.rail{grid-column:span 3}
+.main{grid-column:span 9}
+.full{grid-column:1 / -1}
+@media (max-width:1000px){
+  .rail,.main{grid-column:1 / -1}
+}
+
+/* ---------- masthead ---------- */
+.masthead{
+  position:sticky; top:0; z-index:50;
+  background:#16294a;
+  border-bottom:1px solid rgba(0,0,0,.25);
+}
+:root[data-theme="dark"] .masthead,
+:root:not([data-theme="light"]) .masthead{background:#16294a}
+.masthead .wrap{
+  display:flex; align-items:center; gap:var(--s3); flex-wrap:wrap;
+  min-height:var(--mast);
+  padding-top:9px; padding-bottom:9px;
+}
+.brand{
+  font-family:var(--f-display); font-size:21px; letter-spacing:.005em;
+  color:var(--on-navy); display:flex; align-items:baseline; gap:7px;
+}
+.brand span.bn{color:#f0c675}
+.mast-meta{
+  font-family:var(--f-mono); font-size:10.5px; color:var(--on-navy-2);
+  letter-spacing:.09em; text-transform:uppercase;
+  padding-left:var(--s3); border-left:1px solid var(--navy-rule);
+  line-height:1.5;
+}
+.mast-nav{margin-left:auto; display:flex; gap:2px; flex-wrap:wrap}
+.mast-nav a{
+  font-family:var(--f-mono); font-size:11px; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--on-navy-2); text-decoration:none;
+  padding:7px 10px; border-bottom:2px solid transparent;
+  transition:color .18s ease, border-color .18s ease, background-color .18s ease;
+}
+.mast-nav a:hover{color:var(--on-navy); background:rgba(255,255,255,.06)}
+.mast-nav a.is-active{color:#f0c675; border-bottom-color:#f0c675}
+.masthead :focus-visible{outline-color:#f0c675; outline-offset:-2px}
+
+/* reading progress */
+.progress{
+  position:absolute; left:0; bottom:-1px; height:2px; width:0%;
+  background:#c98a13; z-index:2;
+}
+
+/* Compact sticky masthead on small screens. Left to wrap freely it grew to
+   ~270px — a third of a phone viewport, permanently — and buried the top of
+   each section behind itself. Brand + meta share one line, the nav becomes a
+   single horizontally-scrollable row, and --mast is corrected so anchor jumps
+   still clear it. */
+@media (max-width:760px){
+  :root{--mast:82px}
+  .masthead .wrap{
+    gap:2px 10px; padding-top:7px; padding-bottom:0; align-items:baseline;
+  }
+  .brand{font-size:17px; gap:5px}
+  .mast-meta{
+    font-size:8.5px; letter-spacing:.05em; line-height:1.4;
+    padding-left:10px;
+  }
+  .mast-nav{
+    margin-left:0; margin-top:5px; width:100%;
+    flex-wrap:nowrap; overflow-x:auto; overscroll-behavior-x:contain;
+    scrollbar-width:none; -ms-overflow-style:none;
+    border-top:1px solid var(--navy-rule);
+  }
+  .mast-nav::-webkit-scrollbar{display:none}
+  /* Tightened so all six fit without scrolling, with vertical padding carrying
+     the touch-target height rather than the font size. */
+  .mast-nav a{
+    flex:0 0 auto; white-space:nowrap;
+    padding:12px 6px; font-size:9px; letter-spacing:.05em;
+  }
+}
+@media (max-width:400px){
+  .mast-meta{border-left:none; padding-left:0}
+  .mast-nav a{padding-left:5px; padding-right:5px; letter-spacing:.03em}
+}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(46px,6.5vw,92px) 0 clamp(34px,4vw,52px)}
+.eyebrow{
+  font-family:var(--f-mono); font-size:11px; letter-spacing:.15em;
+  text-transform:uppercase; color:var(--signal);
+  padding-bottom:12px; margin-bottom:20px;
+  border-bottom:2px solid var(--signal);
+  display:block;
+}
+.namemark{display:flex; flex-direction:column; gap:4px; color:var(--accent)}
+.namemark .bn{font-size:clamp(40px,4.6vw,56px); line-height:1.25; display:block}
+.namemark .gloss{
+  font-family:var(--f-mono); font-size:11px; letter-spacing:.05em;
+  color:var(--ink-3); text-transform:none; line-height:1.6;
+}
+h1{
+  font-family:var(--f-display); font-weight:400;
+  font-size:clamp(38px, 5.6vw, 68px); line-height:1.04;
+  letter-spacing:-.018em; max-width:17ch;
+}
+h1 em{font-style:italic; color:var(--signal)}
+.deck{
+  margin-top:26px; max-width:var(--measure);
+  font-size:clamp(16.5px,1.55vw,18.5px); line-height:1.62; color:var(--ink-2);
+  padding-left:var(--s3); border-left:1px solid var(--rule-strong);
+}
+
+/* byline strip */
+.byline{
+  margin-top:clamp(34px,4vw,54px);
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:0 var(--gutter);
+  border-top:2px solid var(--ink); border-bottom:1px solid var(--rule);
+}
+.byline > div{display:flex; flex-direction:column; gap:4px; padding:16px 0}
+.byline-k{
+  font-family:var(--f-mono); font-size:10px; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--signal);
+}
+.byline-v{font-family:var(--f-display); font-size:19px; line-height:1.3; color:var(--ink)}
+
+/* fact rail — explicit columns so the hairline rules never orphan on wrap */
+.hero-facts{
+  margin:0; display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  border-bottom:1px solid var(--rule);
+}
+.fact{
+  padding:18px var(--s3) 20px; position:relative;
+  border-left:1px solid var(--rule);
+}
+.fact:nth-child(5n+1){border-left:none; padding-left:0}
+@media (max-width:1150px){
+  .hero-facts{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .fact{border-left:1px solid var(--rule); padding-left:var(--s3)}
+  .fact:nth-child(3n+1){border-left:none; padding-left:0}
+  .fact:nth-child(n+4){border-top:1px solid var(--rule)}
+}
+@media (max-width:620px){
+  .hero-facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fact{border-left:1px solid var(--rule); padding-left:var(--s3)}
+  .fact:nth-child(n){border-top:none}
+  .fact:nth-child(2n+1){border-left:none; padding-left:0}
+  .fact:nth-child(n+3){border-top:1px solid var(--rule)}
+}
+.fact dt{
+  font-family:var(--f-mono); font-size:10px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--ink-3); margin-bottom:8px;
+}
+.fact dd{
+  margin:0; font-family:var(--f-display); font-size:27px; color:var(--accent);
+  font-variant-numeric:tabular-nums lining-nums; line-height:1.1; letter-spacing:-.01em;
+}
+.fact dd small{
+  display:block; font-family:var(--f-body); font-size:12px; color:var(--ink-3);
+  margin-top:7px; letter-spacing:.01em; line-height:1.45;
+}
+
+/* ---------- sections ---------- */
+.sec{padding:clamp(40px,4.4vw,62px) 0; border-top:1px solid var(--rule-strong)}
+.sec:first-of-type{border-top:2px solid var(--ink)}
+
+.sec-rail{align-self:start}
+@media (min-width:1001px){
+  .sec-rail{position:sticky; top:calc(var(--mast) + 28px)}
+}
+.sec-num{display:block}
+.sec-num .n{
+  display:block; font-family:var(--f-display); font-weight:500;
+  font-size:clamp(46px,5vw,64px); line-height:.9; letter-spacing:-.03em;
+  color:var(--rule-strong); font-variant-numeric:lining-nums;
+}
+.sec-num .t{
+  display:block; margin-top:12px; padding-top:12px;
+  border-top:1px solid var(--rule);
+  font-family:var(--f-mono); font-size:11px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--signal); line-height:1.55;
+}
+
+.sec-head{margin-bottom:clamp(28px,3.2vw,40px)}
+h2{
+  font-family:var(--f-display); font-weight:400;
+  font-size:clamp(28px,3.6vw,42px); line-height:1.1; letter-spacing:-.018em;
+  max-width:21ch;
+}
+.lede{
+  margin-top:16px; max-width:var(--measure); color:var(--ink-2);
+  font-size:16px;
+}
+.prose{max-width:var(--measure); display:flex; flex-direction:column; gap:16px; color:var(--ink-2)}
+.prose > p{color:var(--ink-2)}
+.prose strong{font-weight:600; color:var(--ink)}
+.note{color:var(--ink-2); font-size:15px}
+.mt-lg{margin-top:22px}
+
+.two{display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:clamp(26px,3vw,46px); align-items:start}
+/* Diagrams carry 10px labels inside a 640-unit viewBox: below ~600px of render
+   width they become unreadable and force an inner scrollbar. Give every figure
+   the full main column instead of half of it. */
+#method .two, #validation .two{grid-template-columns:minmax(0,1fr)}
+.mb-xl{margin-bottom:clamp(32px,4vw,48px)}
+.mb-lg{margin-bottom:34px}
+
+/* section sub-heading */
+.sub-h{
+  font-family:var(--f-display); font-weight:500; font-size:25px;
+  letter-spacing:-.012em; line-height:1.2;
+}
+
+/* ---------- strands ---------- */
+.strands{border-top:1px solid var(--rule-strong)}
+.strand{
+  display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.25fr);
+  gap:clamp(20px,3vw,44px);
+  padding:30px 0; border-bottom:1px solid var(--rule);
+}
+@media (max-width:760px){ .strand{grid-template-columns:1fr; gap:16px} }
+.strand h3{
+  font-family:var(--f-display); font-size:23px; font-weight:500; line-height:1.2;
+  letter-spacing:-.01em;
+}
+/* purely graphic marker — no generated text anywhere on this page */
+.strand h3::before{
+  content:""; display:block; width:30px; height:2px;
+  background:var(--signal); margin-bottom:14px;
+}
+.strand .cite{
+  font-family:var(--f-mono); font-size:11px; color:var(--ink-3);
+  margin-top:10px; line-height:1.7; letter-spacing:.01em;
+}
+.strand p{color:var(--ink-2); font-size:15.5px}
+.ours{
+  margin-top:16px; padding:16px 18px; background:var(--sunken);
+  border-left:3px solid var(--signal); font-size:15px; color:var(--ink-2);
+  line-height:1.6;
+}
+.ours em{color:var(--ink)}
+.ours b{
+  display:block; font-family:var(--f-mono); font-size:10px; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--signal); margin-bottom:7px; font-weight:500;
+}
+
+/* ---------- gap callout ---------- */
+.gap-note{
+  border:1px solid var(--rule-strong); border-top:3px solid var(--gap);
+  background:var(--surface); padding:24px 26px; max-width:var(--measure);
+  box-shadow:var(--shadow);
+}
+.gap-note b{
+  font-family:var(--f-mono); font-size:10px; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--gap); display:block; margin-bottom:10px; font-weight:500;
+}
+.gap-note p{font-family:var(--f-display); font-size:21px; line-height:1.4; color:var(--ink)}
+
+/* ---------- figures ---------- */
+figure{
+  margin:0; background:var(--surface);
+  border:1px solid var(--rule-strong); box-shadow:var(--shadow);
+}
+.fig-body{padding:18px 18px 8px; overflow-x:auto}
+/* The diagrams carry 10px labels in a 640-unit viewBox. Letting them shrink to
+   a phone's width renders those at ~6px; instead hold a floor that keeps them
+   legible and let .fig-body scroll horizontally to pan. */
+figure svg{display:block; width:100%; height:auto; min-width:560px}
+figcaption{
+  padding:13px 18px 16px; font-size:13px; color:var(--ink-3);
+  border-top:1px solid var(--rule); margin-top:10px; line-height:1.6;
+}
+figcaption b{
+  color:var(--ink); font-weight:600; font-family:var(--f-mono);
+  font-size:11.5px; letter-spacing:.03em;
+}
+
+/* mono callout */
+.callout-mono{
+  font-family:var(--f-mono); font-size:12.5px; color:var(--ink-2);
+  background:var(--sunken); border-left:3px solid var(--rule-strong);
+  padding:14px 16px; line-height:1.65;
+}
+
+/* ---------- pipeline ---------- */
+.pipe{
+  display:grid; grid-template-columns:repeat(4,minmax(0,1fr));
+  border-top:2px solid var(--ink);
+}
+.step{
+  padding:20px var(--s2) 24px; display:flex; flex-direction:column; gap:8px;
+  border-left:1px solid var(--rule);
+}
+.step:nth-child(4n+1){border-left:none; padding-left:0}
+@media (max-width:1240px){
+  .pipe{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .step{border-left:1px solid var(--rule); padding-left:var(--s3)}
+  .step:nth-child(2n+1){border-left:none; padding-left:0}
+  .step:nth-child(n+3){border-top:1px solid var(--rule); margin-top:-1px; padding-top:21px}
+}
+@media (max-width:620px){
+  .pipe{grid-template-columns:minmax(0,1fr)}
+  .step{border-left:none; padding-left:0}
+  .step + .step{border-top:1px solid var(--rule)}
+}
+.step .k{
+  font-family:var(--f-mono); font-size:10px; color:var(--signal);
+  letter-spacing:.14em; font-weight:500;
+}
+.step h4{font-family:var(--f-display); font-size:19px; font-weight:500; letter-spacing:-.008em; line-height:1.2}
+.step p{font-size:14.5px; color:var(--ink-2); line-height:1.6}
+
+/* ---------- phases ---------- */
+.phases{border-top:2px solid var(--ink)}
+.phase{
+  display:grid; grid-template-columns:150px minmax(0,1fr);
+  gap:clamp(16px,2.5vw,40px); padding:26px 0; border-bottom:1px solid var(--rule);
+}
+@media (max-width:660px){ .phase{grid-template-columns:1fr; gap:12px} }
+.phase .when{
+  font-family:var(--f-mono); font-size:11px; color:var(--ink-3);
+  letter-spacing:.06em; padding-top:4px; text-transform:uppercase;
+}
+.phase .when b{
+  display:block; font-family:var(--f-display); color:var(--accent);
+  font-size:38px; font-weight:500; letter-spacing:-.03em; line-height:.95;
+  margin-bottom:9px; font-variant-numeric:lining-nums;
+}
+.phase h3{
+  font-family:var(--f-display); font-size:22px; font-weight:500;
+  margin-bottom:12px; letter-spacing:-.012em; line-height:1.2;
+}
+.phase ul{margin:0; padding:0; list-style:none; color:var(--ink-2); font-size:15px; display:flex; flex-direction:column}
+.phase li{padding:8px 0 8px 22px; position:relative; border-top:1px solid var(--rule); line-height:1.55}
+.phase li:first-child{border-top:none; padding-top:0}
+.phase li::before{
+  content:""; position:absolute; left:2px; top:.72em; width:8px; height:1px;
+  background:var(--signal);
+}
+.phase li:first-child::before{top:.62em}
+
+/* ---------- indicators table ---------- */
+.tbl-scroll{overflow-x:auto; border:1px solid var(--rule-strong); background:var(--surface); box-shadow:var(--shadow)}
+table{border-collapse:collapse; width:100%; min-width:600px; font-size:14.5px}
+caption{
+  text-align:left; padding:16px 18px 4px; font-family:var(--f-mono);
+  font-size:11px; letter-spacing:.06em; color:var(--ink-3); line-height:1.6;
+}
+th,td{padding:12px 18px; text-align:left; border-bottom:1px solid var(--rule); vertical-align:top}
+thead th{
+  font-family:var(--f-mono); font-size:10px; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--ink-3); font-weight:500; border-bottom:2px solid var(--ink);
+}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--sunken)}
+td.num{
+  font-family:var(--f-mono); font-variant-numeric:tabular-nums lining-nums;
+  color:var(--signal); white-space:nowrap; font-weight:500; font-size:14px;
+}
+td.dim{color:var(--ink-2); font-size:14px}
+
+/* ---------- deliverables ---------- */
+.deliv{
+  list-style:none; margin:0; padding:0;
+  display:grid; grid-template-columns:repeat(3,minmax(0,1fr));
+  border-top:2px solid var(--ink);
+}
+.deliv li{
+  padding:20px var(--s3) 24px;
+  border-bottom:1px solid var(--rule);
+  border-left:1px solid var(--rule);
+}
+.deliv li:nth-child(3n+1){border-left:none; padding-left:0}
+@media (max-width:900px){
+  .deliv{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .deliv li{border-left:1px solid var(--rule); padding-left:var(--s3)}
+  .deliv li:nth-child(2n+1){border-left:none; padding-left:0}
+}
+@media (max-width:560px){
+  .deliv{grid-template-columns:minmax(0,1fr)}
+  .deliv li{border-left:none; padding-left:0}
+}
+.deliv h4{font-family:var(--f-display); font-size:20px; font-weight:500; margin-bottom:7px; letter-spacing:-.01em; line-height:1.2}
+.deliv p{font-size:14.5px; color:var(--ink-2); line-height:1.6}
+.deliv .tag{
+  font-family:var(--f-mono); font-size:10px; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--signal); display:block; margin-bottom:10px;
+}
+
+/* ---------- risk ---------- */
+.risk{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:var(--gutter) clamp(24px,3vw,40px)}
+.risk-item{border-top:2px solid var(--signal); padding-top:16px}
+.risk-item h4{font-family:var(--f-display); font-size:19px; font-weight:500; margin-bottom:9px; letter-spacing:-.01em; line-height:1.25}
+.risk-item p{font-size:14.5px; color:var(--ink-2); line-height:1.6}
+.risk-item p + p{
+  margin-top:12px; padding:10px 0 0 14px;
+  border-left:2px solid var(--rule-strong); color:var(--ink-3);
+}
+
+/* ---------- refs ---------- */
+.refs{
+  list-style:none; margin:0; padding:0;
+  display:flex; flex-direction:column;
+  font-size:13.5px; color:var(--ink-2); line-height:1.65;
+  border-top:1px solid var(--rule-strong);
+}
+.refs li{
+  padding:13px 0 13px 28px; position:relative;
+  border-bottom:1px solid var(--rule);
+}
+.refs li::before{
+  content:""; position:absolute; left:0; top:22px;
+  width:12px; height:1px; background:var(--signal);
+}
+.refs em{font-family:var(--f-display); font-size:1.1em; font-style:italic}
+
+/* ---------- footer ---------- */
+footer{
+  background:#16294a; color:var(--on-navy-2);
+  padding:clamp(36px,5vw,60px) 0 clamp(48px,6vw,72px);
+  font-size:13.5px; line-height:1.7;
+  border-top:3px solid #c98a13;
+}
+footer p + p{margin-top:10px}
+
+/* ---------- reveal ----------
+   Scoped to individual blocks, never to a whole section: fading a 2000px
+   column as one unit means a nav jump lands the reader on invisible text.
+   The .jsr gate is set by an inline head script, so blocks are never hidden
+   when JS is off or reduced motion is requested. */
+.jsr :where(.sec-head, .prose, .gap-note, figure, .strand, .step, .phase,
+         .deliv li, .tbl-scroll, .risk-item, .refs li, .sub-h, .callout-mono){
+  opacity:0; transform:translateY(10px);
+  transition:opacity .42s cubic-bezier(.22,.61,.36,1), transform .42s cubic-bezier(.22,.61,.36,1);
+}
+.jsr .in{opacity:1; transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation:none!important; transition:none!important}
+  .jsr :where(.sec-head, .prose, .gap-note, figure, .strand, .step, .phase,
+           .deliv li, .tbl-scroll, .risk-item, .refs li, .sub-h, .callout-mono){
+    opacity:1; transform:none;
+  }
+}
+</style>
+
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <div class="brand">Project <span class="bn" lang="bn">প্রজ্ঞা</span> Progya</div>
+    <div class="mast-meta">CSE, BUET · Cutting-Edge CSE/IT Research</div>
+    <nav class="mast-nav" aria-label="Sections">
+      <a href="#problem">Problem</a>
+      <a href="#background">Background</a>
+      <a href="#method">Method</a>
+      <a href="#validation">Validation</a>
+      <a href="#plan">Plan</a>
+      <a href="#outputs">Outputs</a>
+    </nav>
+  </div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+</header>
+
+<main>
+
+  <!-- ================= HERO ================= -->
+  <div class="wrap">
+    <div class="hero grid">
+
+      <div class="rail">
+        <span class="eyebrow">Research programme · 2026–2027</span>
+        <p class="namemark">
+          <span class="bn" lang="bn">প্রজ্ঞা</span>
+          <span class="gloss">progya — discernment, applied wisdom</span>
+        </p>
+      </div>
+
+      <div class="main">
+        <h1>A unified AI-powered national <em>competency framework</em> for 21st-century skills</h1>
+        <p class="deck">
+          Every year roughly one million higher-secondary graduates sit university admission tests and
+          about 400,000 graduates prepare for the Bangladesh Civil Service preliminary examination, of whom
+          near 3% advance. Progya asks a research question hidden inside that statistic: can the preparation
+          itself — not the exam — be turned into a measured, personalised, nationally observable skills
+          development process?
+        </p>
+      </div>
+
+      <div class="full">
+        <div class="byline">
+          <div>
+            <span class="byline-k">Principal Investigator</span>
+            <span class="byline-v">Professor Dr. Mohammad Saifur Rahman</span>
+          </div>
+          <div>
+            <span class="byline-k">Institution</span>
+            <span class="byline-v">Department of Computer Science &amp; Engineering, BUET</span>
+          </div>
+        </div>
+
+        <dl class="hero-facts">
+          <div class="fact"><dt>Duration</dt><dd>24 months<small>Jan 2026 – Dec 2027</small></dd></div>
+          <div class="fact"><dt>Learner model</dt><dd>BKT<small>Interpretable by design</small></dd></div>
+          <div class="fact"><dt>Generation</dt><dd>Progya-QG<small>Domain-adapted LLM, HITL</small></dd></div>
+          <div class="fact"><dt>Pilot cohort</dt><dd>200+<small>CAT and BCS tracks</small></dd></div>
+          <div class="fact"><dt>Question bank</dt><dd>10,000+<small>Expert-validated items</small></dd></div>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= PROBLEM ================= -->
+  <section class="sec" id="problem">
+    <div class="wrap grid">
+
+      <aside class="rail sec-rail">
+        <span class="sec-num">
+          <span class="n">01</span><span class="sr-only"> — </span><span class="t">The research problem</span>
+        </span>
+      </aside>
+
+      <div class="main">
+        <div class="sec-head">
+          <h2>Assessment at national scale produces enormous effort and almost no measurement</h2>
+        </div>
+
+        <div class="two">
+          <div class="prose">
+            <p>
+              High-stakes public examinations in Bangladesh function as selection mechanisms. The effort
+              poured into preparing for them is largely rote, largely unmeasured, and — for the overwhelming
+              majority who do not advance — largely discarded. Simultaneously, the performance data generated by
+              hundreds of thousands of examinees each cycle is the highest-resolution picture of national human
+              capital that exists, and it is never analysed as such.
+            </p>
+            <p>
+              Progya treats this as a socio-technical systems problem with three coupled research components:
+              a formal competency ontology, an interpretable learner model that drives personalised practice,
+              and a privacy-preserving method for validating that model against real population outcomes.
+            </p>
+            <p>
+              The scientific claim is not that any one of these components is new. It is that no one has
+              <strong>integrated all three into a single functioning system at national scale</strong>, and
+              that doing so in a non-English, resource-constrained, high-stakes setting surfaces problems the
+              existing literature has not had to solve.
+            </p>
+          </div>
+
+          <div>
+            <div class="gap-note">
+              <b>Research gap</b>
+              <p>
+                Learner modelling, AI content generation, and learning analytics for policy are each mature
+                fields. Their synthesis into one cohesive system — validated at population scale, in a
+                developing-nation institutional context — is essentially unstudied.
+              </p>
+            </div>
+            <p class="note mt-lg">
+              Progya is designed so that its failure modes are informative. If the calibration loop shows no
+              correlation between platform-estimated mastery and real exam performance, that is a publishable
+              negative result about the transfer validity of adaptive practice systems.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= BACKGROUND ================= -->
+  <section class="sec" id="background">
+    <div class="wrap grid">
+
+      <aside class="rail sec-rail">
+        <span class="sec-num">
+          <span class="n">02</span><span class="sr-only"> — </span><span class="t">State of the art</span>
+        </span>
+      </aside>
+
+      <div class="main">
+        <div class="sec-head">
+          <h2>Three literatures, and where this project departs from each</h2>
+          <p class="lede">
+            For every strand we adopt the established result and state explicitly where we diverge, and why the
+            divergence is a design decision rather than a shortcut.
+          </p>
+        </div>
+
+        <div class="strands">
+
+          <article class="strand">
+            <div>
+              <h3>Learner modelling and adaptive pathways</h3>
+              <p class="cite">Corbett &amp; Anderson 1995 · Piech et al. 2015 · Shin et al. 2021 (SAINT+)</p>
+            </div>
+            <div>
+              <p>
+                Bayesian Knowledge Tracing models mastery of a skill as a latent probability updated from
+                observed responses. Deep Knowledge Tracing and Transformer variants beat it on predictive
+                accuracy by capturing long-range dependencies across a learner's interaction sequence.
+              </p>
+              <div class="ours">
+                <b>Our departure</b>
+                We deliberately adopt BKT, not DKT. In a public-facing national system, the ability to explain
+                <em>why</em> a learner was shown a particular item outweighs a marginal AUC gain. Fairness and
+                transparency are functional requirements here, not afterthoughts — accuracy traded for
+                accountability is a defensible research position, and we intend to quantify the size of that trade.
+              </div>
+            </div>
+          </article>
+
+          <article class="strand">
+            <div>
+              <h3>AI-driven content generation for assessment</h3>
+              <p class="cite">Raffel et al. 2020 (T5) · Amershi et al. 2014 (HITL)</p>
+            </div>
+            <div>
+              <p>
+                Question generation has moved from templates to fine-tuned pre-trained language models. The
+                consistent finding across the literature is that fully automated generation is not yet reliable
+                enough for high-stakes assessment; the strongest systems keep subject-matter experts in the loop.
+              </p>
+              <div class="ours">
+                <b>Our departure</b>
+                We fine-tune a compact open-weight model (Qwen3-4B class) with PEFT/LoRA on a curated corpus of
+                the Bangladeshi higher-secondary syllabus and civil service competencies. The contribution is a
+                blueprint for <em>localised, high-fidelity assessment models</em> in a non-English high-stakes
+                context — a setting the English-language QG literature barely covers.
+              </div>
+            </div>
+          </article>
+
+          <article class="strand">
+            <div>
+              <h3>Learning analytics for educational policy</h3>
+              <p class="cite">Siemens &amp; Gašević 2012 · Williamson 2016</p>
+            </div>
+            <div>
+              <p>
+                Learning analytics has largely operated at course and institution level. The emerging frontier is
+                educational data mining for governance — using large-scale data to identify systemic inequity and
+                guide curriculum reform — which raises immediate and unresolved privacy questions.
+              </p>
+              <div class="ours">
+                <b>Our departure</b>
+                The System-Level Calibration Loop is our methodological contribution: aggregated, anonymised
+                population outcomes calibrate the model without any individual score ever entering the system.
+                Open-loop for the individual, closed-loop for the system.
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= METHOD ================= -->
+  <section class="sec" id="method">
+    <div class="wrap grid">
+
+      <aside class="rail sec-rail">
+        <span class="sec-num">
+          <span class="n">03</span><span class="sr-only"> — </span><span class="t">Technical approach</span>
+        </span>
+      </aside>
+
+      <div class="main">
+        <div class="sec-head">
+          <h2>An ontology, a generator, and a learner model that share one vocabulary</h2>
+          <p class="lede">
+            Every component addresses the same machine-readable skill URIs. That shared vocabulary is what makes
+            the system analysable end to end — from a single response to a national skills map.
+          </p>
+        </div>
+
+        <div class="two mb-xl">
+          <figure>
+            <div class="fig-body">
+              <svg viewBox="0 0 640 268" role="img" aria-label="Hub-and-spoke competency ontology: a hub of cross-cutting foundational skills connected to two spokes, combined admission tests and civil service preliminary, each resolving to level-4 granular skills with URIs">
+                <g stroke="var(--rule-strong)" stroke-width="1.2" fill="none">
+                  <path d="M320 140 L152 100"/><path d="M320 140 L152 186"/>
+                  <path d="M320 140 L418 103"/><path d="M320 140 L418 177"/>
+                </g>
+                <circle cx="320" cy="140" r="56" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+                <text x="320" y="134" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="14" font-weight="600" fill="var(--ink)">HUB</text>
+                <text x="320" y="152" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="10.5" fill="var(--ink-2)">Foundational</text>
+                <text x="320" y="165" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="10.5" fill="var(--ink-2)">skills</text>
+
+                <g font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="var(--ink-2)" text-anchor="end">
+                  <text x="142" y="104">Critical reasoning</text>
+                  <text x="142" y="190">Data literacy</text>
+                </g>
+
+                <rect x="418" y="86" width="150" height="34" rx="0" fill="var(--surface)" stroke="var(--rule-strong)"/>
+                <text x="493" y="108" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="12" font-weight="600" fill="var(--ink)">SPOKE · CAT</text>
+                <rect x="418" y="160" width="150" height="34" rx="0" fill="var(--surface)" stroke="var(--rule-strong)"/>
+                <text x="493" y="182" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="12" font-weight="600" fill="var(--ink)">SPOKE · BCS</text>
+
+                <text x="320" y="242" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing="1" fill="var(--ink-3)">LEVEL 1 → LEVEL 4 · UNIQUE URI PER SKILL</text>
+              </svg>
+            </div>
+            <figcaption>
+              <b>Fig. 1 — Hub-and-spoke competency ontology.</b> The hub holds cross-cutting foundational skills;
+              spokes hold examination-specific knowledge. Every terminal skill carries a unique machine-readable
+              URI, giving the generator, the learner model and the analytics layer one shared ground truth.
+            </figcaption>
+          </figure>
+
+          <div class="prose">
+            <p>
+              The ontology is defined by expert panels convened with the relevant education and recruitment
+              bodies, resolved down to Level-4 granularity, and then frozen as an addressable vocabulary. Without
+              this step neither the generator nor the learner model has anything stable to point at.
+            </p>
+            <p>
+              It is also the layer that makes the system portable. A framework expressed as URIs rather than as
+              a curriculum document can be adopted by a curriculum authority, an accreditation body, or a skills
+              certification agency without renegotiating its structure each time.
+            </p>
+            <p class="callout-mono">
+              Item tagging target: 50–100 validated items per Level-4 skill.
+            </p>
+          </div>
+        </div>
+
+        <h3 class="sub-h">The human-in-the-loop generation pipeline</h3>
+        <p class="lede mb-lg">
+          A closed cycle in which expert judgement is the training signal, not a post-hoc filter.
+        </p>
+
+        <div class="pipe">
+          <div class="step">
+            <span class="k">STAGE 1</span>
+            <h4>Corpus curation</h4>
+            <p>Source syllabus material and recruitment regulations are digitised and semantically structured against the ontology.</p>
+          </div>
+          <div class="step">
+            <span class="k">STAGE 2</span>
+            <h4>Gold standard set</h4>
+            <p>A general-purpose model drafts instruction–output pairs; expert panels correct and validate to yield ≥1,000 gold examples.</p>
+          </div>
+          <div class="step">
+            <span class="k">STAGE 3</span>
+            <h4>PEFT / LoRA fine-tune</h4>
+            <p>A compact open-weight model is adapted on the gold set, producing Progya-QG — a precision instrument, not a chatbot.</p>
+          </div>
+          <div class="step">
+            <span class="k">STAGE 4</span>
+            <h4>Iterative refinement</h4>
+            <p>Generated items return to the moderation interface; each expert decision becomes new training signal. The loop tightens.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= VALIDATION ================= -->
+  <section class="sec" id="validation">
+    <div class="wrap grid">
+
+      <aside class="rail sec-rail">
+        <span class="sec-num">
+          <span class="n">04</span><span class="sr-only"> — </span><span class="t">Learner model and validation</span>
+        </span>
+      </aside>
+
+      <div class="main">
+        <div class="sec-head">
+          <h2>Mastery as a tracked probability, calibrated against reality without touching a single score</h2>
+        </div>
+
+        <div class="two">
+          <figure>
+            <div class="fig-body">
+              <svg viewBox="0 0 640 300" role="img" aria-label="System-level calibration loop: individual practice data stays open-loop while anonymised aggregated exam outcomes close the loop at system level to correct model parameters">
+                <defs>
+                  <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                    <path d="M0 0 L10 5 L0 10 z" fill="var(--ink-3)"/>
+                  </marker>
+                  <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                    <path d="M0 0 L10 5 L0 10 z" fill="var(--signal)"/>
+                  </marker>
+                </defs>
+
+                <rect x="24" y="46" width="148" height="56" rx="0" fill="var(--surface)" stroke="var(--rule-strong)"/>
+                <text x="98" y="70" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="12.5" font-weight="600" fill="var(--ink)">Learner practice</text>
+                <text x="98" y="87" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--ink-3)">xAPI → LRS</text>
+
+                <rect x="246" y="46" width="148" height="56" rx="0" fill="var(--accent-soft)" stroke="var(--accent)"/>
+                <text x="320" y="70" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="12.5" font-weight="600" fill="var(--ink)">BKT learner model</text>
+                <text x="320" y="87" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--ink-3)">predicted mastery</text>
+
+                <rect x="468" y="46" width="148" height="56" rx="0" fill="var(--surface)" stroke="var(--rule-strong)"/>
+                <text x="542" y="70" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="12.5" font-weight="600" fill="var(--ink)">Personalised path</text>
+                <text x="542" y="87" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--ink-3)">next item selection</text>
+
+                <rect x="246" y="196" width="148" height="56" rx="0" fill="var(--signal-soft)" stroke="var(--signal)"/>
+                <text x="320" y="220" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="12.5" font-weight="600" fill="var(--ink)">Calibration report</text>
+                <text x="320" y="237" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--ink-3)">predicted vs. actual</text>
+
+                <rect x="468" y="196" width="148" height="56" rx="0" fill="var(--sunken)" stroke="var(--rule-strong)" stroke-dasharray="4 3"/>
+                <text x="542" y="220" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="12.5" font-weight="600" fill="var(--ink)">Summative exam</text>
+                <text x="542" y="237" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--ink-3)">anonymised, aggregated</text>
+
+                <g stroke="var(--ink-3)" stroke-width="1.3" fill="none" marker-end="url(#ar)">
+                  <path d="M172 74 L240 74"/>
+                  <path d="M394 74 L462 74"/>
+                  <path d="M542 102 L542 190"/>
+                </g>
+                <g stroke="var(--signal)" stroke-width="1.5" fill="none" marker-end="url(#ar2)">
+                  <path d="M468 224 L400 224"/>
+                  <path d="M320 196 L320 108"/>
+                </g>
+
+                <text x="336" y="160" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--signal)">parameter correction</text>
+                <text x="98" y="130" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--ink-3)">no individual score</text>
+                <text x="98" y="145" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--ink-3)">ever re-enters</text>
+
+                <text x="320" y="284" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing="1" fill="var(--ink-3)">OPEN-LOOP FOR THE INDIVIDUAL · CLOSED-LOOP FOR THE SYSTEM</text>
+              </svg>
+            </div>
+            <figcaption>
+              <b>Fig. 2 — The System-Level Calibration Loop.</b> After each examination cycle, anonymised aggregate
+              outcomes are compared against the platform's predicted mastery distribution. Discrepancies correct
+              item difficulty and BKT parameters. No individual result is ever linked back to a user — the
+              privacy-preserving property is architectural, not procedural.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= PLAN ================= -->
+  <section class="sec" id="plan">
+    <div class="wrap grid">
+
+      <aside class="rail sec-rail">
+        <span class="sec-num">
+          <span class="n">05</span><span class="sr-only"> — </span><span class="t">Execution</span>
+        </span>
+      </aside>
+
+      <div class="main">
+        <div class="sec-head">
+          <h2>Four sequential phases, each gated on a verifiable artefact</h2>
+          <p class="lede">
+            Phases are strictly ordered: the ontology must be frozen before generation can be tagged, generation
+            must produce a bank before the adaptive engine has anything to select from, and the platform must run
+            a pilot before any calibration data exists.
+          </p>
+        </div>
+
+        <div class="phases">
+          <article class="phase">
+            <div class="when"><b>01</b>Months 1–6</div>
+            <div>
+              <h3>Formalise the foundational framework</h3>
+              <ul>
+                <li>Data-sharing protocols and partnership terms formally agreed with education and recruitment bodies</li>
+                <li>Expert panels convened with defined Terms of Reference</li>
+                <li>Hub of cross-cutting skills defined and validated by both panels</li>
+                <li>CAT and BCS spoke frameworks completed to Level 4, each skill assigned a unique URI</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="phase">
+            <div class="when"><b>02</b>Months 7–12</div>
+            <div>
+              <h3>AI development and content generation</h3>
+              <ul>
+                <li>Gold-standard dataset of ≥1,000 expert-validated instruction–output pairs completed</li>
+                <li>Progya-QG v1.0 trained, meeting a target quality score on a held-out test set</li>
+                <li>Human-in-the-loop moderation interface deployed and in expert use</li>
+                <li>Validated question bank reaches 5,000+ items, each tagged to a granular skill</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="phase">
+            <div class="when"><b>03</b>Months 13–18</div>
+            <div>
+              <h3>Platform development and pilot launch</h3>
+              <ul>
+                <li>MVP deployed with authentication, dashboards and the assessment interface</li>
+                <li>BKT adaptive engine integrated and driving item selection</li>
+                <li>Learning Record Store operational; xAPI statements verified for all key interactions</li>
+                <li>Pilot launched with a minimum of 200 recruited volunteers across both tracks</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="phase">
+            <div class="when"><b>04</b>Months 19–24</div>
+            <div>
+              <h3>Data analysis and dissemination</h3>
+              <ul>
+                <li>First anonymised aggregate summative dataset ingested and processed</li>
+                <li>First System-Level Calibration Report completed and shared with partners</li>
+                <li>At least two papers submitted to peer-reviewed venues</li>
+                <li>Project Completion Report submitted</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= OUTPUTS ================= -->
+  <section class="sec" id="outputs">
+    <div class="wrap grid">
+
+      <aside class="rail sec-rail">
+        <span class="sec-num">
+          <span class="n">06</span><span class="sr-only"> — </span><span class="t">Outputs and measurement</span>
+        </span>
+      </aside>
+
+      <div class="main">
+        <div class="sec-head">
+          <h2>What exists at the end, and how we will know whether it worked</h2>
+        </div>
+
+        <ul class="deliv mb-xl">
+          <li>
+            <span class="tag">Artefact</span>
+            <h4>Validated competency framework</h4>
+            <p>A machine-readable hub-and-spoke ontology covering tertiary admission and public service competencies, validated by expert panels.</p>
+          </li>
+          <li>
+            <span class="tag">Model</span>
+            <h4>Progya-QG</h4>
+            <p>A domain-adapted language model specialised for assessment item generation in Bengali and English against the national curriculum.</p>
+          </li>
+          <li>
+            <span class="tag">Dataset</span>
+            <h4>National question bank</h4>
+            <p>10,000+ expert-validated items, each tagged to a specific Level-4 competency URI.</p>
+          </li>
+          <li>
+            <span class="tag">System</span>
+            <h4>Adaptive learning platform</h4>
+            <p>A pilot-tested web platform with the BKT engine, personalised practice, and an xAPI Learning Record Store.</p>
+          </li>
+          <li>
+            <span class="tag">Prototype</span>
+            <h4>Predictive policy analytics</h4>
+            <p>A dashboard visualising anonymised macro-level skill distributions, trends and regional disparity.</p>
+          </li>
+          <li>
+            <span class="tag">Publication</span>
+            <h4>Peer-reviewed output</h4>
+            <p>Papers on the calibration methodology and on localised assessment generation, plus workshop dissemination.</p>
+          </li>
+        </ul>
+
+        <div class="tbl-scroll mb-lg">
+          <table>
+            <caption>Impact indicators — targets set at proposal stage and evaluated against pilot data</caption>
+            <thead>
+              <tr><th scope="col">Indicator</th><th scope="col">Target</th><th scope="col">What it tests</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Average mastery gain, users completing ≥200 questions</td>
+                <td class="num">&gt; 30%</td>
+                <td class="dim">Whether the adaptive engine produces measurable learning, not just engagement</td>
+              </tr>
+              <tr>
+                <td>Reduction in gap between a user's strongest and weakest decile of skills</td>
+                <td class="num">&gt; 25%</td>
+                <td class="dim">Whether personalisation is actually targeting weakness rather than reinforcing strength</td>
+              </tr>
+              <tr>
+                <td>Correlation, platform mastery vs. real summative exam performance</td>
+                <td class="num">Statistically significant</td>
+                <td class="dim">Transfer validity — the central scientific claim of the calibration loop</td>
+              </tr>
+              <tr>
+                <td>Active weekly users during the six-month core pilot</td>
+                <td class="num">150+ avg.</td>
+                <td class="dim">Whether the system holds a cohort long enough to generate usable trajectories</td>
+              </tr>
+              <tr>
+                <td>Three-month retention</td>
+                <td class="num">&gt; 40%</td>
+                <td class="dim">Sustained use, a precondition for longitudinal analysis</td>
+              </tr>
+              <tr>
+                <td>Post-graduate researchers funded and engaged</td>
+                <td class="num">5 MS · 1 PhD</td>
+                <td class="dim">Research capacity built, not just software delivered</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="sub-h mb-lg">Principal risks and how they are handled</h3>
+        <div class="risk">
+          <div class="risk-item">
+            <h4>Cold start with no specialised training data</h4>
+            <p>No domain corpus exists for this syllabus and these competencies; the gold standard set must be built by hand before fine-tuning yields anything useful.</p>
+            <p>Phase 2 front-loads expert time and treats the gold set itself as a citable deliverable, so the effort produces a research asset regardless of model outcome.</p>
+          </div>
+          <div class="risk-item">
+            <h4>Dependence on subject-matter expert availability</h4>
+            <p>Both the ontology and the moderation loop are gated on sustained access to experts from partner institutions.</p>
+            <p>Terms of Reference are formalised in Phase 1; independent consultants provide external validation of the framework and its psychometric soundness.</p>
+          </div>
+          <div class="risk-item">
+            <h4>Examination policy change mid-project</h4>
+            <p>A structural change to syllabus or exam format would invalidate parts of the spoke frameworks and the tagged bank.</p>
+            <p>Hub skills are deliberately policy-independent; spokes are versioned separately so a change re-tags rather than rebuilds.</p>
+          </div>
+          <div class="risk-item">
+            <h4>Rapid model obsolescence</h4>
+            <p>Base models and adaptation techniques chosen today may be superseded within the project lifecycle.</p>
+            <p>PEFT/LoRA on a compact open-weight base keeps re-adaptation cheap; the gold dataset, not the checkpoint, is the durable asset.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= REFS ================= -->
+  <section class="sec" id="refs">
+    <div class="wrap grid">
+
+      <aside class="rail sec-rail">
+        <span class="sec-num">
+          <span class="n">07</span><span class="sr-only"> — </span><span class="t">References</span>
+        </span>
+      </aside>
+
+      <div class="main">
+        <div class="sec-head">
+          <h2>Foundational literature</h2>
+        </div>
+        <ul class="refs">
+          <li>Corbett, A. T., &amp; Anderson, J. R. (1995). Knowledge tracing: Modeling the acquisition of procedural knowledge. <em>User Modeling and User-Adapted Interaction</em>, 4, 253–278.</li>
+          <li>Piech, C., Bassen, J., Huang, J., Ganguli, S., Sahami, M., Guibas, L., &amp; Sohl-Dickstein, J. (2015). Deep Knowledge Tracing. <em>Advances in Neural Information Processing Systems</em>, 28.</li>
+          <li>Shin, D., Shim, Y., Yu, H., Lee, S., Kim, B., &amp; Choi, Y. (2021). SAINT+: Integrating temporal features for EdNet correctness prediction. <em>LAK21</em>, 490–496.</li>
+          <li>Raffel, C., Shazeer, N., Roberts, A., Lee, K., Narang, S., Matena, M., Zhou, Y., Li, W., &amp; Liu, P. J. (2020). Exploring the limits of transfer learning with a unified text-to-text transformer. <em>JMLR</em>, 21, 1–67.</li>
+          <li>Amershi, S., Cakmak, M., Knox, W. B., &amp; Kulesza, T. (2014). Power to the People: The Role of Humans in Interactive Machine Learning. <em>AI Magazine</em>, 35(4), 105–120.</li>
+          <li>Siemens, G., &amp; Gašević, D. (2012). Guest editorial — Learning and knowledge analytics. <em>Educational Technology &amp; Society</em>, 15(3), 1–2.</li>
+          <li>Williamson, B. (2016). Digital education governance: An introduction. <em>European Educational Research Journal</em>, 15(1), 3–13.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Principal Investigator: Professor Dr. Mohammad Saifur Rahman, Department of Computer Science &amp; Engineering, Bangladesh University of Engineering and Technology (BUET).</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* reading progress */
+  var bar = document.getElementById('progress');
+  function progress(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+  }
+  addEventListener('scroll', progress, {passive:true});
+  addEventListener('resize', progress);
+  progress();
+
+  /* active section in masthead nav */
+  var links = {};
+  [].forEach.call(document.querySelectorAll('.mast-nav a'), function(a){
+    links[a.getAttribute('href').slice(1)] = a;
+  });
+  var sections = [].filter.call(document.querySelectorAll('section[id]'), function(s){
+    return links[s.id];
+  });
+  if (sections.length && 'IntersectionObserver' in window){
+    var seen = {};
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ seen[e.target.id] = e.isIntersecting; });
+      var current = null;
+      sections.forEach(function(s){ if (seen[s.id] && !current) current = s.id; });
+      for (var id in links) links[id].classList.toggle('is-active', id === current);
+    }, {rootMargin:'-25% 0px -60% 0px'});
+    sections.forEach(function(s){ navObs.observe(s); });
+  }
+
+  /* block-level reveal */
+  var BLOCKS = '.sec-head, .prose, .gap-note, figure, .strand, .step, .phase,' +
+               '.deliv li, .tbl-scroll, .risk-item, .refs li, .sub-h, .callout-mono';
+  var rv = document.querySelectorAll(BLOCKS);
+
+  if (reduce || !('IntersectionObserver' in window)){
+    [].forEach.call(rv, function(el){ el.classList.add('in'); });
+  } else {
+    var rvObs = new IntersectionObserver(function(entries, obs){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
+      });
+    }, {rootMargin:'140px 0px -6% 0px', threshold:0});
+    [].forEach.call(rv, function(el){ rvObs.observe(el); });
+  }
+})();
+</script>
+
+</body>
+</html>
