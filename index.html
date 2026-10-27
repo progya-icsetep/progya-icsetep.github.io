@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Project Progya: a unified AI-powered national competency framework integrating Bayesian Knowledge Tracing, a domain-adapted LLM for assessment generation, and a privacy-preserving System-Level Calibration Loop. PI: Professor Dr. Mohammad Saifur Rahman, Dept of CSE, BUET.">
-<meta name="author" content="Professor Dr. Mohammad Saifur Rahman, Department of CSE, BUET">
+<meta name="description" content="Project Progya: a unified AI-powered national competency framework integrating Bayesian Knowledge Tracing, a domain-adapted LLM for assessment generation, and a privacy-preserving System-Level Calibration Loop. An ICSETEP RDG sub-project (PIN C-57). PI: Professor Dr. Mohammad Saifur Rahman; Co-PIs: Dr. M. Sohel Rahman, Dr. Md. Shariful Islam Bhuyan. Dept of CSE, BUET.">
+<meta name="author" content="Professor Dr. Mohammad Saifur Rahman, Dr. M. Sohel Rahman, Dr. Md. Shariful Islam Bhuyan — Department of CSE, BUET">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Project Progya">
 <meta property="og:description" content="A unified AI-powered national competency framework for 21st-century skills assessment and predictive policy analytics.">
@@ -263,6 +263,21 @@ h1 em{font-style:italic; color:var(--signal)}
   text-transform:uppercase; color:var(--signal);
 }
 .byline-v{font-family:var(--f-display); font-size:19px; line-height:1.3; color:var(--ink)}
+
+/* grant strip */
+.grant{
+  display:grid; grid-template-columns:minmax(0,1fr) auto;
+  gap:var(--s3) var(--gutter); align-items:start;
+  padding:18px 0 20px; border-bottom:1px solid var(--rule);
+}
+@media (max-width:760px){ .grant{grid-template-columns:minmax(0,1fr)} }
+.grant-title{
+  margin:6px 0 0; max-width:none;
+  font-family:var(--f-display); font-size:17px; line-height:1.45; color:var(--ink-2);
+}
+.grant-pin{text-align:right}
+@media (max-width:760px){ .grant-pin{text-align:left} }
+.grant-pin .byline-v{display:block; margin-top:6px; color:var(--accent); font-variant-numeric:lining-nums}
 
 /* fact rail — explicit columns so the hairline rules never orphan on wrap */
 .hero-facts{
@@ -591,7 +606,7 @@ footer p + p{margin-top:10px}
 <header class="masthead">
   <div class="wrap">
     <div class="brand">Project <span class="bn" lang="bn">প্রজ্ঞা</span> Progya</div>
-    <div class="mast-meta">CSE, BUET · Cutting-Edge CSE/IT Research</div>
+    <div class="mast-meta">CSE, BUET · ICSETEP RDG · PIN C-57</div>
     <nav class="mast-nav" aria-label="Sections">
       <a href="#problem">Problem</a>
       <a href="#background">Background</a>
@@ -611,7 +626,7 @@ footer p + p{margin-top:10px}
     <div class="hero grid">
 
       <div class="rail">
-        <span class="eyebrow">Research programme · 2026–2027</span>
+        <span class="eyebrow">ICSETEP RDG sub-project · 2026–2027</span>
         <p class="namemark">
           <span class="bn" lang="bn">প্রজ্ঞা</span>
           <span class="gloss">progya — discernment, applied wisdom</span>
@@ -636,8 +651,27 @@ footer p + p{margin-top:10px}
             <span class="byline-v">Professor Dr. Mohammad Saifur Rahman</span>
           </div>
           <div>
+            <span class="byline-k">Co-Principal Investigator I</span>
+            <span class="byline-v">Dr. M. Sohel Rahman</span>
+          </div>
+          <div>
+            <span class="byline-k">Co-Principal Investigator II</span>
+            <span class="byline-v">Dr. Md. Shariful Islam Bhuyan</span>
+          </div>
+          <div>
             <span class="byline-k">Institution</span>
             <span class="byline-v">Department of Computer Science &amp; Engineering, BUET</span>
+          </div>
+        </div>
+
+        <div class="grant">
+          <div>
+            <span class="byline-k">Funded under the ICSETEP Research &amp; Development Grant (RDG) · Improving Computer and Software Engineering Tertiary Education Project, UGC Bangladesh</span>
+            <p class="grant-title">Full title: <em>Progya (<span class="bn" lang="bn">প্রজ্ঞা</span>): Developing a Unified AI-Powered National Competency Framework Integrating Psychometric Modeling, Domain-adapted LLM and Personalized Learning Pathways for 21st-Century Skills Assessment and Predictive Policy Analytics</em></p>
+          </div>
+          <div class="grant-pin">
+            <span class="byline-k">Project PIN</span>
+            <span class="byline-v">C-57</span>
           </div>
         </div>
 
@@ -1206,7 +1240,8 @@ footer p + p{margin-top:10px}
 
 <footer>
   <div class="wrap">
-    <p>Principal Investigator: Professor Dr. Mohammad Saifur Rahman, Department of Computer Science &amp; Engineering, Bangladesh University of Engineering and Technology (BUET).</p>
+    <p>Progya (<span class="bn" lang="bn">প্রজ্ঞা</span>): Developing a Unified AI-Powered National Competency Framework Integrating Psychometric Modeling, Domain-adapted LLM and Personalized Learning Pathways for 21st-Century Skills Assessment and Predictive Policy Analytics — a sub-project (PIN C-57) under the Research &amp; Development Grant (RDG) of the Improving Computer and Software Engineering Tertiary Education Project (ICSETEP), University Grants Commission of Bangladesh.</p>
+    <p>Principal Investigator: Professor Dr. Mohammad Saifur Rahman · Co-PI I: Dr. M. Sohel Rahman · Co-PI II: Dr. Md. Shariful Islam Bhuyan — Department of Computer Science &amp; Engineering, Bangladesh University of Engineering and Technology (BUET).</p>
   </div>
 </footer>
 
